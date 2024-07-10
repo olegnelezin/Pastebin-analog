@@ -3,6 +3,7 @@ package org.example.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,6 +16,19 @@ public class Record {
     @Column
     private String url;
 
-    @Column
-    private String minioUrl;
+    @OneToOne
+    private Paste paste;
+
+    public Record(String url, Paste paste) {
+        this.url = url;
+        this.paste = paste;
+    }
+
+    public Record() {
+
+    }
+
+    public String getUrl() {
+        return url;
+    }
 }

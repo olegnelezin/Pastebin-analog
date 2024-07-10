@@ -1,7 +1,5 @@
 package org.example.dto;
 
-import org.example.entity.Record;
-
 public class RecordDto {
 
     public RecordDto(String url) {
