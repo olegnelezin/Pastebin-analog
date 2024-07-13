@@ -9,3 +9,8 @@ spring:
     password: 123
   liquibase:
     change-log: classpath:db/changelog/master-changelog.yml
+
+minio:
+  access-key: admin
+  secret-key: 123
+  url: http://localhost:9000

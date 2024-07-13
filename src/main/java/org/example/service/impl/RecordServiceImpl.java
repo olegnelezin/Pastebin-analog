@@ -27,7 +27,7 @@ public class RecordServiceImpl implements RecordService {
 
     public RecordDto createRecord(PasteDto pasteDto) {
 
-        Paste paste = new Paste(pasteDto.getTitle(), "#minioUrl#");
+        var paste = new Paste(pasteDto.getTitle(), "#minioUrl#");
         pasteService.savePaste(paste);
 
         var record = new Record(generateUrlService.generateUrl(), paste);

@@ -12,8 +12,8 @@ public class GenerateUrlServiceImpl implements GenerateUrlService {
 
     @Override
     public String generateUrl() {
-        UUID uuid = UUID.randomUUID();
-        ByteBuffer byteBuffer = ByteBuffer.wrap(new byte[16]);
+        var uuid = UUID.randomUUID();
+        var byteBuffer = ByteBuffer.wrap(new byte[16]);
         byteBuffer.putLong(uuid.getMostSignificantBits());
         byteBuffer.putLong(uuid.getLeastSignificantBits());
         byte[] uuidBytes = byteBuffer.array();
