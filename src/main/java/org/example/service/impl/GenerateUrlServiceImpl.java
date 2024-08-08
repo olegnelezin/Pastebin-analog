@@ -1,6 +1,7 @@
 package org.example.service.impl;
 
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.example.repository.RecordRepository;
 import org.example.service.GenerateUrlService;
 import org.springframework.stereotype.Service;
 

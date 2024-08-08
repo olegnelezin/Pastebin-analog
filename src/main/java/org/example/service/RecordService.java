@@ -8,5 +8,9 @@ public interface RecordService {
 
     void saveRecord(Record record);
 
+    Record findRecordByUrl(String url);
+
     RecordDto createRecord(PasteDto pasteDto);
+
+    PasteDto getPasteDto(String url);
 }

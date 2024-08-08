@@ -2,6 +2,7 @@ package org.example.service.impl;
 
 import org.example.entity.Paste;
 import org.example.repository.PasteRepository;
+import org.example.service.MinioService;
 import org.example.service.PasteService;
 import org.springframework.stereotype.Service;
 
