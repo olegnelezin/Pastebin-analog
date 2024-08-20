@@ -16,7 +16,8 @@ public class NotFoundExceptionAdvice extends BaseControllerAdvice {
     @ExceptionHandler(NotFoundException.class)
     ResponseEntity<ErrorMessage> handleException(NotFoundException e) {
         var status = switch(e.getCode()) {
-            case PASTE_NOT_FOUND -> HttpStatus.NOT_FOUND;
+            case PASTE_NOT_FOUND,
+                    RECORD_NOT_FOUND -> HttpStatus.NOT_FOUND;
         };
 
         var code = e.getCode().toString();

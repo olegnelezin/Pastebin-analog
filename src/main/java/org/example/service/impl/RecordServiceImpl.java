@@ -11,6 +11,9 @@ import org.example.service.PasteService;
 import org.example.service.RecordService;
 import org.example.entity.Record;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import static org.example.exception.NotFoundException.Code.RECORD_NOT_FOUND;
 
 @AllArgsConstructor
 @Service
@@ -24,6 +27,7 @@ public class RecordServiceImpl implements RecordService {
 
     private final MinioService minioService;
 
+    @Transactional
     public RecordDto createRecord(PasteDto pasteDto) {
         var paste = new Paste(pasteDto.getTitle(),
                 minioService.uploadText(pasteDto.getText()));
@@ -47,7 +51,8 @@ public class RecordServiceImpl implements RecordService {
 
     @Override
     public Record findRecordByUrl(String url) {
-        return recordRepository.findRecordByUrl(url).orElseThrow();
+        return recordRepository.findRecordByUrl(url).orElseThrow(() ->
+                RECORD_NOT_FOUND.get("Record not found"));
     }
 
     @Override

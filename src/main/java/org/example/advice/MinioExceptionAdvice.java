@@ -19,7 +19,8 @@ public class MinioExceptionAdvice extends BaseControllerAdvice {
     ResponseEntity<ErrorMessage> handleException(MinioException e) {
         var status = switch (e.getCode()) {
             case CREATE_BUCKET,
-                    UPLOAD_TEXT  -> HttpStatus.INTERNAL_SERVER_ERROR;
+                    UPLOAD_TEXT,
+                    GET_TEXT -> HttpStatus.INTERNAL_SERVER_ERROR;
         };
 
         var code = e.getCode().toString();
