@@ -1,5 +1,6 @@
 package org.example.service.impl;
 
+import lombok.AllArgsConstructor;
 import org.example.dto.PasteDto;
 import org.example.dto.RecordDto;
 import org.example.entity.Paste;
@@ -11,6 +12,7 @@ import org.example.service.RecordService;
 import org.example.entity.Record;
 import org.springframework.stereotype.Service;
 
+@AllArgsConstructor
 @Service
 public class RecordServiceImpl implements RecordService {
 
@@ -22,13 +24,6 @@ public class RecordServiceImpl implements RecordService {
 
     private final MinioService minioService;
 
-    public RecordServiceImpl(RecordRepository recordRepository, PasteService pasteService, GenerateUrlService generateUrlService, MinioService minioService) {
-        this.recordRepository = recordRepository;
-        this.pasteService = pasteService;
-        this.generateUrlService = generateUrlService;
-        this.minioService = minioService;
-    }
-
     public RecordDto createRecord(PasteDto pasteDto) {
         var paste = new Paste(pasteDto.getTitle(),
                 minioService.uploadText(pasteDto.getText()));
@@ -39,7 +34,7 @@ public class RecordServiceImpl implements RecordService {
             uniqueUrl = generateUrlService.generateUrl();
         }
 
-        var record = new Record(uniqueUrl.substring(1, 8), paste);
+        var record = new Record(uniqueUrl, paste);
         saveRecord(record);
 
         return new RecordDto(record.getUrl());

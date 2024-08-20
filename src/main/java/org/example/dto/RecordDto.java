@@ -1,14 +1,15 @@
 package org.example.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class RecordDto {
 
-    public RecordDto(String url) {
-        this.url = url;
-    }
-
     private String url;
-
-    public String getUrl() {
-        return url;
-    }
 }

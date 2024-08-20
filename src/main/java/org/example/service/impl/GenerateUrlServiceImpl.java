@@ -1,7 +1,6 @@
 package org.example.service.impl;
 
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.example.repository.RecordRepository;
 import org.example.service.GenerateUrlService;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +17,6 @@ public class GenerateUrlServiceImpl implements GenerateUrlService {
         byteBuffer.putLong(uuid.getMostSignificantBits());
         byteBuffer.putLong(uuid.getLeastSignificantBits());
         byte[] uuidBytes = byteBuffer.array();
-        return Base64.encodeBase64String(uuidBytes);
+        return Base64.encodeBase64String(uuidBytes).substring(1, 8);
     }
 }

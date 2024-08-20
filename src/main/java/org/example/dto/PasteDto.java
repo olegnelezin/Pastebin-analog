@@ -1,22 +1,17 @@
 package org.example.dto;
 
-public class PasteDto {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    public PasteDto(String title, String text) {
-        this.title = title;
-        this.text = text;
-    }
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public class PasteDto {
 
     private String title;
 
     private String text;
-
-
-    public String getText() {
-        return text;
-    }
-
-    public String getTitle() {
-        return title;
-    }
 }

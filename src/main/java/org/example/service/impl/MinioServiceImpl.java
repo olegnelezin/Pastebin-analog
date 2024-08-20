@@ -5,35 +5,21 @@ import io.minio.GetObjectArgs;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
-import io.minio.errors.ErrorResponseException;
-import io.minio.errors.InsufficientDataException;
-import io.minio.errors.InternalException;
-import io.minio.errors.InvalidResponseException;
-import io.minio.errors.MinioException;
-import io.minio.errors.ServerException;
-import io.minio.errors.XmlParserException;
+import lombok.AllArgsConstructor;
 import org.example.configuration.properties.MinioProperties;
 import org.example.service.MinioService;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 
+@AllArgsConstructor
 @Service
 public class MinioServiceImpl implements MinioService {
 
     private final MinioClient minioClient;
 
     private final MinioProperties minioProperties;
-
-    public MinioServiceImpl(MinioClient minioClient, MinioProperties minioProperties) {
-        this.minioClient = minioClient;
-        this.minioProperties = minioProperties;
-    }
 
     @Override
     public void createBucket(String bucket) {
@@ -46,7 +32,7 @@ public class MinioServiceImpl implements MinioService {
                 return;
             }
         } catch (Exception e) {
-            // throw bucket exception
+            // throw
         }
 
         var makeBucketArgs = MakeBucketArgs.builder()
