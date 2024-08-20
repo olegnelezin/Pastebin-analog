@@ -4,7 +4,7 @@ import lombok.Getter;
 
 import java.util.Map;
 
-
+@Getter
 public class BaseException extends RuntimeException {
 
     protected Map<String, Object> args;
@@ -28,11 +28,4 @@ public class BaseException extends RuntimeException {
         return args.toString();
     }
 
-    public String getMessageParam() {
-        return messageParam;
-    }
-
-    public Map<String, Object> getArgs() {
-        return args;
-    }
 }

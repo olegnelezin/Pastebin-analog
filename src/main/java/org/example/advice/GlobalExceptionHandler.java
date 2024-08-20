@@ -20,7 +20,7 @@ public class GlobalExceptionHandler{
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public ResponseEntity<ErrorMessage> handleException(HttpRequestMethodNotSupportedException e) {
         var args = new HashMap<String, Object>();
-        args.put(e.getLocalizedMessage(), "Неправильный тип метода запроса");
+        args.put(e.getLocalizedMessage(), "Incorrect type of method");
 
         var errorMessage = setErrorMessage(args);
         return setResponse(errorMessage, HttpStatus.METHOD_NOT_ALLOWED);
@@ -29,7 +29,7 @@ public class GlobalExceptionHandler{
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ErrorMessage> handleException(HttpMessageNotReadableException ex) {
         var args = new HashMap<String, Object>();
-        args.put(ex.getLocalizedMessage(), "Ошибка парсинга json");
+        args.put(ex.getLocalizedMessage(), "Json parsing error");
 
         var errorMessage = setErrorMessage(args);
         return setResponse(errorMessage, HttpStatus.BAD_REQUEST);
@@ -38,7 +38,7 @@ public class GlobalExceptionHandler{
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<ErrorMessage> handleException(MethodArgumentTypeMismatchException ex) {
         var args = new HashMap<String, Object>();
-        args.put(ex.getLocalizedMessage(), "Неправильный тип аргумента");
+        args.put(ex.getLocalizedMessage(), "Incorrect type of argument");
 
         var errorMessage = setErrorMessage(args);
         return setResponse(errorMessage, HttpStatus.BAD_REQUEST);

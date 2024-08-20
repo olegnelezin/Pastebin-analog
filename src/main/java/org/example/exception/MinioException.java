@@ -14,14 +14,20 @@ public class MinioException extends BaseException {
 
     @Getter
     public enum Code {
-        CREATE_BUCKET("#"),
-        UPLOAD_TEXT("#")
+
+        CREATE_BUCKET("error_message.create_bucket"),
+        UPLOAD_TEXT("error_message.upload_text"),
+        GET_TEXT("error_message.get_text"),
         ;
 
         private final String userMessageProperty;
 
         Code(String userMessageProperty) {
             this.userMessageProperty = userMessageProperty;
+        }
+
+        public MinioException get(String msg) {
+            return new MinioException(this, null, msg);
         }
     }
 }
